@@ -1,3 +1,7 @@
-import { app } from './app'
+import Vue from 'vue'
+import App from './App.vue'
 
-app.$mount('#app')
+new Vue({
+  el: '#app',
+  render: h => h(App)
+})
