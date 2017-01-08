@@ -1,139 +1,128 @@
 <template>
-  <div class="renderer-container">
-  </div>
+  <div class="renderer-container"></div>
 </template>
 
 <script>
 
-  var SEPARATION = 100, AMOUNTX = 50, AMOUNTY = 50;
-
-  var container;
-  var camera, scene, renderer;
-
-  var particles, particle, count = 0;
-
-  var mouseX = 0, mouseY = 0;
-
-  var windowHalfX = window.innerWidth / 2;
-  var windowHalfY = window.innerHeight / 2;
-
-  var wavesParams = {
-    position: 20,
-    scale: 4
-  };
-
   export default {
     name: 'Renderer',
     data () {
-      return {}
+      return {
+        container: null,
+        camera: null,
+        scene: null,
+        renderer: null,
+        particles: 0,
+        particle: 0,
+        count: 0,
+        windowHalfX: window.innerWidth / 2,
+        windowHalfY: window.innerHeight / 2,
+        separation: 100,
+        amountX: 50,
+        amountY: 50,
+        wavesParams: {
+          position: 20,
+          scale: 4
+        }
+      }
     },
     methods: {
       init: function () {
 
-        console.log(THREE)
+        this.container = document.createElement( 'div' )
+    		document.querySelector('.renderer-container').appendChild( this.container )
 
-        container = document.createElement( 'div' );
-    		//document.querySelector('.renderer-container').appendChild( container );
-        document.body.appendChild( container );
+    		this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 )
 
-    		camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+    		this.camera.position.z = 1000
+    		this.camera.position.x = -40
+    		this.camera.position.y = 150
 
-    		camera.position.z = 1000;
-    		camera.position.x = -40;
-    		camera.position.y = 150;
+    		this.scene = new THREE.Scene()
 
-    		scene = new THREE.Scene();
+    		this.scene.background = new THREE.Color( 0xFFFFFF )
 
-    		scene.background = new THREE.Color( 0xFFFFFF );
+    		this.particles = new Array()
 
-    		particles = new Array();
-
-    		var PI2 = Math.PI * 2;
+    		var PI2 = Math.PI * 2
     		var material = new THREE.SpriteCanvasMaterial( {
 
     			color: 0x555555,
     			program: function ( context ) {
 
-    				context.beginPath();
-    				context.arc( 0, 0, 0.5, 0, PI2, true );
-    				context.fill();
+    				context.beginPath()
+    				context.arc( 0, 0, 0.5, 0, PI2, true )
+    				context.fill()
 
     			}
 
-    		} );
+    		} )
 
-    		var i = 0;
+    		var i = 0
 
-    		for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+    		for ( var ix = 0; ix < this.amountX; ix ++ ) {
 
-    			for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+    			for ( var iy = 0; iy < this.amountY; iy ++ ) {
 
-    				particle = particles[ i ++ ] = new THREE.Sprite( material );
-    				particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
-    				particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) / 2 );
-    				scene.add( particle );
+    				this.particle = this.particles[ i ++ ] = new THREE.Sprite( material )
+    				this.particle.position.x = ix * this.separation - ( ( this.amountX * this.separation ) / 2 )
+    				this.particle.position.z = iy * this.separation - ( ( this.amountY * this.separation ) / 2 )
+    				this.scene.add( this.particle )
 
     			}
 
     		}
 
-    		renderer = new THREE.CanvasRenderer();
-    		renderer.setPixelRatio( window.devicePixelRatio );
-    		renderer.setSize( window.innerWidth, window.innerHeight );
-    		container.appendChild( renderer.domElement );
+    		this.renderer = new THREE.CanvasRenderer()
+    		this.renderer.setPixelRatio( window.devicePixelRatio )
+    		this.renderer.setSize( window.innerWidth, window.innerHeight )
+    		this.container.appendChild( this.renderer.domElement )
 
-    		window.addEventListener( 'resize', this.onWindowResize, false );
+    		window.addEventListener( 'resize', this.onWindowResize, false )
 
     	},
       onWindowResize: function () {
 
-    				windowHalfX = window.innerWidth / 2;
-    				windowHalfY = window.innerHeight / 2;
+    	  this.windowHalfX = window.innerWidth / 2
+    	  this.windowHalfY = window.innerHeight / 2
 
-    				camera.aspect = window.innerWidth / window.innerHeight;
-    				camera.updateProjectionMatrix();
+    	  this.camera.aspect = window.innerWidth / window.innerHeight
+    	  this.camera.updateProjectionMatrix()
 
-    				renderer.setSize( window.innerWidth, window.innerHeight );
+    	  this.renderer.setSize( window.innerWidth, window.innerHeight )
 
     	},
       animate: function () {
 
-    	  requestAnimationFrame( this.animate );
-    		this.render();
+    	  requestAnimationFrame( this.animate )
+    		this.render()
 
     	},
       render: function () {
 
-    				// camera.position.x += ( mouseX - camera.position.x ) * .05;
-    				// camera.position.y += ( - mouseY - camera.position.y ) * .05;
+    	  this.camera.lookAt( this.scene.position );
 
-    				camera.lookAt( scene.position );
+    		var i = 0;
 
-    				var i = 0;
+    		for ( var ix = 0; ix < this.amountX; ix ++ ) {
 
-    				for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+    		  for ( var iy = 0; iy < this.amountY; iy ++ ) {
 
-    					for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
-
-    						particle = particles[ i++ ];
-    						particle.position.y = ( Math.sin( ( ix + count ) * 0.3 ) * wavesParams.position ) +
-    							( Math.sin( ( iy + count ) * 0.5 ) * wavesParams.position );
-    						particle.scale.x = particle.scale.y = ( Math.sin( ( ix + count ) * 0.3 ) + 1 ) * 4 +
-    							( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * wavesParams.scale;
-
-    					}
-
-    				}
-
-    				renderer.render( scene, camera );
-
-    				count += 0.1;
+    			  this.particle = this.particles[ i++ ];
+    				this.particle.position.y = ( Math.sin( ( ix + this.count ) * 0.3 ) * this.wavesParams.position ) + ( Math.sin( ( iy + this.count ) * 0.5 ) * this.wavesParams.position )
+						this.particle.scale.x = this.particle.scale.y = ( Math.sin( ( ix + this.count ) * 0.3 ) + 1 ) * 4 +	( Math.sin( ( iy + this.count ) * 0.5 ) + 1 ) * this.wavesParams.scale;
 
     			}
+
+    		}
+
+    		this.renderer.render( this.scene, this.camera );
+
+    		this.count += 0.1;
+
+    	}
     },
     mounted () {
-      //Waves.init()
-      //Waves.animate()
       this.init()
       this.animate()
     }

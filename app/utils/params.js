@@ -1,6 +1,7 @@
-const AMOUNT = 10
+const AMOUNT    = 10
 
 class Params {
+
   static get amount() {
     return AMOUNT
   }
