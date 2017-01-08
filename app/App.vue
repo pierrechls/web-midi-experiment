@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
+    <header>
+      <h1>{{ msg }}</h1>
+    </header>
     <renderer></renderer>
   </div>
 </template>
@@ -15,7 +16,7 @@
     components: { Renderer },
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Web MIDI experiment'
       }
     }
   }
@@ -31,6 +32,10 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+  }
+  header {
+    z-index: 2;
+    position: relative;
   }
   h1, h2 {
     font-weight: normal;
