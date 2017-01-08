@@ -5,6 +5,7 @@ const express = require('express')
 const webpack = require('webpack')
 const webpackConfig = require('./webpack.dev')
 const config = require('./config')
+const opn = require('opn');
 
 const app = express()
 
@@ -40,4 +41,5 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}`)
+  opn(`http://localhost:${port}`)
 })
