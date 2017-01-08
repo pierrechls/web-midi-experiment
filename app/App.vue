@@ -2,17 +2,17 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
-    <links></links>
+    <renderer></renderer>
   </div>
 </template>
 
 <script>
 
-  import Links from 'components/Links'
+  import Renderer from 'components/Renderer'
 
   export default {
     name: 'App',
-    components: { Links },
+    components: { Renderer },
     data () {
       return {
         msg: 'Welcome to Your Vue.js App'
