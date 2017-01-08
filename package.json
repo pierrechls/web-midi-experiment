@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "gsap": "^1.19.0",
+    "opn": "^4.0.2",
     "vue": "^2.0.0"
   },
   "devDependencies": {
