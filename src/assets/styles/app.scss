@@ -3,13 +3,11 @@
 
 html {
     height: 100%;
-  }
+}
 
 body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  display: block;
+  height: auto;
 }
 
 * {
@@ -23,8 +21,8 @@ body {
 
 #app {
   color: $green;
-  max-width: 250px;
-  height: 400px;
+  width: 100%;
+  height: auto;
   font-family: 'Futura', Helvetica, sans-serif;
   text-align: center;
   position: relative;

@@ -9,18 +9,11 @@ Vue.use(Vuex)
 // Create an object to hold the initial state when
 // the app starts up
 const state = {
-  seed: settings.seed.default,
   lang: settings.lang
 }
 
 // Create an object storing various mutations. We will write the mutation
 const mutations = {
-  PLANT (state, amount) {
-    state.seed = state.seed - amount
-  },
-  PULL_UP (state, amount) {
-    state.seed = state.seed + amount
-  },
   TRANSLATE (state, lang) {
     state.lang = lang
   }

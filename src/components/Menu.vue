@@ -1,11 +1,7 @@
 <template>
   <div id="menu">
     <lang-switcher></lang-switcher>
-    <ul>
-      <li><router-link :to="{ name: 'Home' }" v-html="$t('menu.home')"></router-link></li>
-      <li><router-link :to="{ name: 'Plant' }" v-html="$t('menu.plant')"></router-link></li>
-      <li><router-link :to="{ name: 'Garden' }" v-html="$t('menu.garden')"></router-link></li>
-    </ul>
+    <h1>Web MIDI experiment</h1>
   </div>
 </template>
 
@@ -25,6 +21,10 @@
 <style lang="scss" scoped>
 
   #menu{
+
+    position: relative;;
+    z-index: 1;
+    top: 50;
 
     .router-link-active {
       text-decoration: line-through !important;

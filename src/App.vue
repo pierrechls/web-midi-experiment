@@ -1,20 +1,20 @@
 <template>
   <div id="app">
     <menu-app></menu-app>
-    <!-- <transition name="default"> -->
-      <router-view></router-view>
-    <!-- <transition> -->
+    <renderer></renderer>
   </div>
 </template>
 
 <script>
 
   import MenuApp from 'components/Menu'
+  import Renderer from 'components/Renderer'
 
   export default {
     name: 'App',
     components: {
-      MenuApp
+      MenuApp,
+      Renderer
     },
     route: {
       data: function (transition) {
