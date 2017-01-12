@@ -25,7 +25,8 @@
     "opn": "^4.0.2",
     "sass-loader": "^4.0.2",
     "vue": "^2.0.0",
-    "vuex": "^1.0.0-rc.2"
+    "vuex": "^1.0.0-rc.2",
+    "webmidi": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
