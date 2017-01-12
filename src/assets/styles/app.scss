@@ -1,0 +1,36 @@
+@import "colors.scss";
+@import "fonts.scss";
+
+html {
+    height: 100%;
+  }
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+* {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#app {
+  color: $green;
+  max-width: 250px;
+  height: 400px;
+  font-family: 'Futura', Helvetica, sans-serif;
+  text-align: center;
+  position: relative;
+
+  a {
+    color: $green;
+    text-decoration: underline;
+  }
+}
