@@ -11,7 +11,7 @@
   var particles = null
   var particle = null
 
-  import WebMidi from 'lib/webmidi'
+  import WebMidi from 'webmidi'
 
   export default {
     name: 'Renderer',
