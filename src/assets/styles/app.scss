@@ -1,8 +1,11 @@
 @import "colors.scss";
 @import "fonts.scss";
 
+@import url('https://fonts.googleapis.com/css?family=PT+Mono');
+
 html {
     height: 100%;
+    font-family: 'PT Mono';
 }
 
 body {
@@ -23,7 +26,7 @@ body {
   color: $green;
   width: 100%;
   height: auto;
-  font-family: 'Futura', Helvetica, sans-serif;
+  font-family: 'PT Mono';
   text-align: center;
   position: relative;
 
