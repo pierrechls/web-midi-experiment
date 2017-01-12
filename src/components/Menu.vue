@@ -26,10 +26,6 @@
     z-index: 1;
     top: 50;
 
-    .router-link-active {
-      text-decoration: line-through !important;
-    }
-
     ul{
       padding: 0;
       li {
