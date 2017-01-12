@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "A Web MIDI experiment",
   "author": "Pierre Charles <pierre.chls@gmail.com>",
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/pierrechls/web-midi-experiment/"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pierrechls/web-midi-experiment/"
   },
   "scripts": {
     "start": "npm run dev",
