@@ -5,6 +5,7 @@ var MIDIController = (function() {
     var MIDI
 
     var _noteCallback
+    var _stateCallback
 
     navigator.requestMIDIAccess({}).then(go, function(e) {
         console.log('Fail', e)
@@ -30,7 +31,8 @@ var MIDIController = (function() {
 
         MIDI = res
         MIDI.onstatechange = function(e) {
-            console.log('state change', e)
+            // console.log('state change', e)
+            _stateCallback(e)
         }
 
         console.log(MIDI)
@@ -45,8 +47,13 @@ var MIDIController = (function() {
         _noteCallback = fn
     }
 
+    function setStateCallback(fn) {
+        _stateCallback = fn
+    }
+
     return {
-        onNote: setNoteCallback
+        onNote: setNoteCallback,
+        onStateChange: setStateCallback
     }
 
 })()
