@@ -5,6 +5,7 @@
 <script>
 
   import WebMidi from 'webmidi'
+  import MIDIController from 'lib/MIDIController'
 
   export default {
     name: 'MidiController',
@@ -14,12 +15,10 @@
     methods: {},
     mounted () {
 
-      WebMidi.enable(function (err) {
-        if (err) {
-          console.log('WebMidi could not be enabled.', err)
-        } else {
-          console.log('WebMidi enabled!')
-        }
+      console.clear();
+
+      MIDIController.onNote( (n, v) => {
+          console.log(n, v)
       })
 
     }
