@@ -18,7 +18,11 @@
       console.clear();
 
       MIDIController.onNote( (n, v) => {
-          console.log(n, v)
+          console.log('note', n, v)
+      })
+
+      MIDIController.onStateChange( (e) => {
+          console.log('state change', e)
       })
 
     }
