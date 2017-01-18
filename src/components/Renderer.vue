@@ -11,8 +11,6 @@
   var particles = null
   var particle = null
 
-  import WebMidi from 'webmidi'
-
   export default {
     name: 'Renderer',
     data () {
@@ -92,14 +90,6 @@
     mounted () {
       this.init()
       this.animate()
-
-      WebMidi.enable(function (err) {
-        if (err) {
-          console.log('WebMidi could not be enabled.', err)
-        } else {
-          console.log('WebMidi enabled!')
-        }
-      })
     }
   }
 

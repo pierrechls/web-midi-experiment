@@ -2,6 +2,7 @@
   <div id="app">
     <menu-app></menu-app>
     <renderer></renderer>
+    <midi-controller></midi-controller>
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 
   import MenuApp from 'components/Menu'
   import Renderer from 'components/Renderer'
+  import MidiController from 'components/MidiController'
 
   export default {
     name: 'App',
     components: {
       MenuApp,
-      Renderer
+      Renderer,
+      MidiController
     },
     route: {
       data: function (transition) {
