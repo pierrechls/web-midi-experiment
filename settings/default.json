@@ -1,3 +1,22 @@
 {
-  "lang": "en"
+  "type": {
+    "pad": 144,
+    "pitch": 176
+  },
+  "pithValues": {
+    "higher": 127,
+    "lower": 0
+  },
+  "wavesParams": {
+    "separation": {
+      "default": 100
+    },
+    "position": {
+      "default": 0,
+      "pitchNumber": 10
+    },
+    "color": {
+      "padNumber": 44
+    }
+  }
 }
