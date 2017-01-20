@@ -1,19 +1,13 @@
 <template>
   <div id="menu">
-    <lang-switcher></lang-switcher>
     <h1>Web MIDI experiment</h1>
   </div>
 </template>
 
 <script>
 
-  import LangSwitcher from 'components/LangSwitcher.vue'
-
   export default {
-    name: 'Menu',
-    components: {
-      LangSwitcher
-    }
+    name: 'Menu'
   }
 
 </script>
