@@ -3,6 +3,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=PT+Mono');
 
+html, body {
+  margin: 0 auto;
+}
+
 html {
     height: 100%;
     font-family: 'PT Mono';
@@ -33,5 +37,10 @@ body {
   a {
     color: $green;
     text-decoration: underline;
+  }
+
+  &.negatif {
+    background: $green;
+    color: $white;
   }
 }
