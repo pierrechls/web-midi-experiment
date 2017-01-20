@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" :class="negatif ? 'negatif' : ''">
     <menu-app></menu-app>
-    <renderer></renderer>
     <midi-controller></midi-controller>
+    <renderer></renderer>
   </div>
 </template>
 
@@ -12,12 +12,19 @@
   import Renderer from 'components/Renderer'
   import MidiController from 'components/MidiController'
 
+  import { getNegatif } from 'src/vuex/getters'
+
   export default {
     name: 'App',
     components: {
       MenuApp,
       Renderer,
       MidiController
+    },
+    vuex: {
+      getters: {
+        negatif: getNegatif
+      }
     },
     route: {
       data: function (transition) {
