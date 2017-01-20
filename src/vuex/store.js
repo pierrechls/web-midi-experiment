@@ -1,21 +1,45 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import settings from 'lib/settings.js'
-
 // Make vue aware of Vuex
 Vue.use(Vuex)
 
 // Create an object to hold the initial state when
 // the app starts up
 const state = {
-  lang: settings.lang
+  negatif: false,
+  midi: {
+    connected: false,
+    name: null
+  },
+  lastPad: {
+    number: null,
+    velocity: null
+  },
+  lastPitch: {
+    number: null,
+    value: null
+  }
 }
 
 // Create an object storing various mutations. We will write the mutation
 const mutations = {
-  TRANSLATE (state, lang) {
-    state.lang = lang
+  SET_NEGATIF_VALUE (state) {
+    state.negatif = !state.negatif
+  },
+  SET_MIDI_STATE (state, connected) {
+    state.midi.connected = connected
+  },
+  SET_MIDI_NAME (state, name) {
+    state.midi.name = name
+  },
+  SET_LAST_PAD (state, number, velocity) {
+    state.lastPad.number = number
+    state.lastPad.velocity = velocity
+  },
+  SET_LAST_PITCH (state, number, value) {
+    state.lastPitch.number = number
+    state.lastPitch.value = value
   }
 }
 
