@@ -1,10 +1,12 @@
-# web-midi-experiment
+# Web MIDI experiment
 
-> A Web MIDI experiment
+![preview](https://raw.githubusercontent.com/pierrechls/web-midi-experiment/raw/master/src/assets/images/web-midi-experiment.gif)
+
+> A Web MIDI experiment using the [Web MIDI API](https://webaudio.github.io/web-midi-api/) and [WebMidi helper](https://github.com/cotejp/webmidi) to interact with a basic three.js [example](https://threejs.org/examples/#canvas_particles_waves)
 
 [![version](https://img.shields.io/badge/version-1.0-green.svg?style=flat-square)](https://github.com/pierrechls/seed) [![front-end-framework](https://img.shields.io/badge/framework-vue.js-lightgrey.svg?style=flat-square)](http://vuejs.org/) [![js-standard-style](https://img.shields.io/badge/code_style-standard-lightgrey.svg?style=flat-square)](http://standardjs.com/) [![sass-stylesheets](https://img.shields.io/badge/stylesheets-sass-lightgrey.svg?style=flat-square)](http://sass-lang.com/)
 
-## How to use it
+## 🔮 How to use it
 
 ### Clone the reposityory
 
@@ -29,3 +31,11 @@ $ npm run dev
 ```
 $ npm run build
 ```
+
+### Have fun
+
+Connect your MIDI device and use your pitch and pad to interact with waves.
+
+## 📕 Prior installation
+
+You have to install [NodeJS](https://nodejs.org/en/) and please use [Chrome](https://www.google.fr/chrome/browser/desktop/) for a better experience.
