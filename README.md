@@ -1,6 +1,6 @@
 # Web MIDI experiment
 
-![preview](https://rawgit.com/pierrechls/web-midi-experiment/master/src/assets/images/web-midi-experiment.gif)
+![preview](http://cdn.rawgit.com/pierrechls/web-midi-experiment/master/src/assets/images/web-midi-experiment.gif)
 
 > A Web MIDI experiment using the [Web MIDI API](https://webaudio.github.io/web-midi-api/) and [WebMidi helper](https://github.com/cotejp/webmidi) to interact with a basic three.js [example](https://threejs.org/examples/#canvas_particles_waves)
 
