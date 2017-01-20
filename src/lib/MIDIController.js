@@ -1,10 +1,13 @@
+import settings from 'lib/settings.js'
+
 var MIDIController = (function() {
 
     if (! navigator.requestMIDIAccess) throw 'No MIDI support in browser'
 
     var MIDI
 
-    var _noteCallback
+    var _padCallback
+    var _pitchCallback
     var _stateCallback
 
     navigator.requestMIDIAccess({}).then(go, function(e) {
@@ -12,8 +15,12 @@ var MIDIController = (function() {
         throw 'Can not connect to MIDI'
     })
 
-    function doNote(n, v) {
-        if(typeof _noteCallback === 'function') _noteCallback(n, v)
+    function doPad(pad, velocity) {
+        if(typeof _padCallback === 'function') _padCallback(pad, velocity)
+    }
+
+    function doPitch(pitch, value) {
+        if(typeof _pitchCallback === 'function') _pitchCallback(pitch, value)
     }
 
     function onMessage(msg) {
@@ -22,7 +29,17 @@ var MIDIController = (function() {
         var note = data[1]
         var velocity = data[2]
 
-        if(type === 144) doNote(note, velocity)
+        if(type === settings.type.pad) {
+          var pad = data[1]
+          var velocity = data[2]
+          doPad(pad, velocity)
+        }
+
+        if(type === settings.type.pitch) {
+          var pitch = data[1]
+          var value = data[2]
+          doPitch(pitch, value)
+        }
 
         // console.log('msg', msg, 'type', type)
     }
@@ -35,16 +52,18 @@ var MIDIController = (function() {
             _stateCallback(e)
         }
 
-        console.log(MIDI)
-
         var inputs = MIDI.inputs.values()
         for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
             input.value.onmidimessage = onMessage
         }
     }
 
-    function setNoteCallback(fn) {
-        _noteCallback = fn
+    function setPadCallback(fn) {
+        _padCallback = fn
+    }
+
+    function setPitchCallback(fn) {
+        _pitchCallback = fn
     }
 
     function setStateCallback(fn) {
@@ -52,7 +71,8 @@ var MIDIController = (function() {
     }
 
     return {
-        onNote: setNoteCallback,
+        onPad: setPadCallback,
+        onPitch: setPitchCallback,
         onStateChange: setStateCallback
     }
 
