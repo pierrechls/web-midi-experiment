@@ -1,9 +1,3 @@
-<style>
-	.markdown-body img {
-	    width: 100%;
-	}
-</style>
-
 <p align="center">
   <img src="http://cdn.rawgit.com/pierrechls/web-midi-experiment/master/src/assets/images/web-midi-experiment.gif" style="width:100%;">
 </p>
